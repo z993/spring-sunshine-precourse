@@ -21,7 +21,7 @@ public class WeatherController {
     @GetMapping
     public ResponseEntity<CityWeatherResponse> getWeather(
             @RequestParam("city") String cityName
-    ) {
+    ) throws Exception {
         CityWeather cityWeather = weatherService.getCityWeather(cityName);
         CityWeatherResponse response = toResponse(cityWeather);
         return ResponseEntity.ok(response);
@@ -29,12 +29,12 @@ public class WeatherController {
 
     private CityWeatherResponse toResponse(CityWeather cityWeather) {
         return new CityWeatherResponse(
-                cityWeather.getCity().getName(),
-                cityWeather.getTemperature(),
-                cityWeather.getApparentTemperature(),
-                cityWeather.getSkyCondition(),
-                cityWeather.getHumidity(),
-                cityWeather.getSummary()
+            cityWeather.getCity().getName(),
+            cityWeather.getTemperature(),
+            cityWeather.getApparentTemperature(),
+            cityWeather.getSkyCondition(),
+            cityWeather.getHumidity(),
+            cityWeather.getSummary()
         );
     }
 }

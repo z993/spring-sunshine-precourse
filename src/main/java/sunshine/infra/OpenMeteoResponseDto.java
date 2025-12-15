@@ -18,4 +18,8 @@ public class OpenMeteoResponseDto {
     public CurrentWeatherDto getCurrent() {
         return current;
     }
+
+    public void setCurrent(CurrentWeatherDto current) {
+        this.current = current;
+    }
 }
