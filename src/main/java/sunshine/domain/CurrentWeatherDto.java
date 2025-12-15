@@ -1,7 +1,10 @@
 package sunshine.domain;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class CurrentWeatherDto {
     private double temperature2m;
+    @JsonProperty("apparent_temperature")
     private double apparentTemperature;
     private double relativeHumidity2m;
     private int weatherCode;

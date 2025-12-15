@@ -13,8 +13,8 @@ public class CityWeather {
             City city,
             double temperature,
             double apparentTemperature,
-            String skyCondition,
             double humidity,
+            String skyCondition,
             String summary
     ) {
         this.city = city;

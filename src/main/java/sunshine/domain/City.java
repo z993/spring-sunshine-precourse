@@ -28,7 +28,7 @@ public enum City {
         return new Coordinate(latitude, longitude);
     }
 
-    public static City fromName(String name) {
+    public static City fromName(String name) throws Exception {
         Objects.requireNonNull(name, "city name must not be null");
         String normalizedName = name.trim();
         for (City city : values()) {
@@ -36,6 +36,6 @@ public enum City {
                 return city;
             }
         }
-        throw new CityNotSupportedException(name);
+        throw new Exception(name);
     }
 }
