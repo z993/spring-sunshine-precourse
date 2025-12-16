@@ -18,9 +18,7 @@ public class WeatherClothMatcher {
         return clothes;
     }
     public List<String> recommend(double temperature) {
-        List<String> clothes = new ArrayList<>(matchBaseClothes(temperature));
-
-        return clothes;
+        return matchBaseClothes(temperature);
     }
 
     private List<String> matchBaseClothes(double temperature) {

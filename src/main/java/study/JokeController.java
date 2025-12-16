@@ -13,6 +13,7 @@ import org.springframework.ai.converter.BeanOutputConverter;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import sunshine.infra.FunctionConfiguration;
 
 import java.util.List;
 import java.util.Map;
@@ -92,4 +93,15 @@ public class JokeController {
                 .content();
     }
 
+    @GetMapping("/recommendClothes")
+    public String recommendClothes(
+            @RequestParam("temperature") double temperature
+    ) {
+        var template = new PromptTemplate("Tell me the weather and recommended clothes when the temperature is {temperature}");
+        var prompt = template.render(Map.of("temperature", temperature ));
+        return client.prompt(prompt)
+                .tools(new FunctionConfiguration())
+                .call()
+                .content();
+    }
 }

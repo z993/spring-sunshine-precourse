@@ -25,6 +25,8 @@ public class Functions {
         var result = LocalDate.now().plusDays(request.days());
         return new DateResponse(result.toString());
     }
+
+
 }
 
 

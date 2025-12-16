@@ -28,6 +28,8 @@ public class WeatherController {
         return ResponseEntity.ok(response);
     }
 
+
+
     private CityWeatherResponse toResponse(CityWeather cityWeather) {
         return new CityWeatherResponse(
 //            cityWeather.getCity().getName(),

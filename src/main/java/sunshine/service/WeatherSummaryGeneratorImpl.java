@@ -4,6 +4,7 @@ import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.chat.prompt.PromptTemplate;
 import org.springframework.ai.chat.prompt.SystemPromptTemplate;
 import org.springframework.stereotype.Component;
 import sunshine.infra.FunctionConfiguration;
@@ -33,8 +34,10 @@ public class WeatherSummaryGeneratorImpl implements WeatherSummaryGenerator {
 //                skyCondition
 //        );
 
-        var user = new UserMessage("""
-                입력받은 정보를 모두 사용해서 한국어로 한 줄 요약 문장을 만들어 줘""");
+        var userTemplate = new PromptTemplate("""
+                            Tell me the weather using input data and recommend the clothes when the temperature is {temperature}
+                            """);
+        var user = new UserMessage(userTemplate.render(Map.of("temperature", temperature)));
 
         var template = new SystemPromptTemplate("""
                 너는 날씨 요약을 한 문장으로 만드는 어시스턴트야.
@@ -43,7 +46,7 @@ public class WeatherSummaryGeneratorImpl implements WeatherSummaryGenerator {
                 - 한 문장만 생성
                 - 설명이나 추가 문장은 절대 붙이지 말 것.
                 - 복장 추천 내용을 포함할 것.
-                - 복장 추천은 우리가 추천하는 복장(clothes)으로 제안할 것.
+                - 복장 추천은 반드시 recommendClothes(temperature) 툴을 호출해서 나온 clothes 목록에서만 선택해서 포함할 것.
                 - 사용자의 요청에 {voice} 스타일로 사용자에게 정보를 주는 답변을 만들어줘.
                 
                 입력:
