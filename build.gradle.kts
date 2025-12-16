@@ -1,6 +1,6 @@
 plugins {
-    id("org.springframework.boot") version "3.3.1"
-    id("io.spring.dependency-management") version "1.1.5"
+    id("org.springframework.boot") version "3.5.8"
+    id("io.spring.dependency-management") version "1.1.7"
     kotlin("plugin.jpa") version "1.9.24"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
@@ -44,6 +44,9 @@ dependencies {
     testAnnotationProcessor("org.projectlombok:lombok:1.18.32")
 
     testImplementation("com.squareup.okhttp3:mockwebserver:4.12.0")
+
+    implementation(platform("org.springframework.ai:spring-ai-bom:1.1.2"))
+    implementation("org.springframework.ai:spring-ai-starter-model-google-genai")
 
 }
 

@@ -52,3 +52,18 @@ Rest Controller 구현
 테스트 코드 작성
 
 예외/에러 처리 및 리팩터링
+
+
+
+---
+Open-Meteo에서 조회한 날씨 데이터를 입력으로 LLM API를 호출해 요약 생성 구현
+
+사용자가 voice 입력하면 LLM API 호출, 입력이 없으면 기존 작성한 WeatherSummaryFormatter를 이용해 요약을 생성
+
+사용자가 입력한 지역의 위도, 경도를 찾아서 Open-Meteo의 입력으로 사용하도록 구현
+
+기온 구간에 따라서 WeatherClothMatcher를 참고해 복장을 추천한다.
+WeatherClothMatcher에는 기온 구간별 옷차림이 정의되어있고 강수 여부에 따라 우산, 장화를 추가한다.
+
+각 요청에 대해 사용량과 비용 추정치를 로그로 남긴다.
+ex. 입력 토큰, 출력 토큰, 총 토큰, 모델명, 캐시 사용 여부, 추정 비용

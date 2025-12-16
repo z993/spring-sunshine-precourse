@@ -2,7 +2,7 @@ package sunshine.domain;
 
 public class CityWeather {
 
-    private final City city;
+    private final String city;
     private final double temperature;
     private final double apparentTemperature;
     private final String skyCondition;
@@ -10,7 +10,8 @@ public class CityWeather {
     private final String summary;
 
     public CityWeather(
-            City city,
+//            City city,
+            String city,
             double temperature,
             double apparentTemperature,
             double humidity,
@@ -25,7 +26,11 @@ public class CityWeather {
         this.summary = summary;
     }
 
-    public City getCity() {
+//    public City getCity() {
+//        return city;
+//    }
+
+    public String getCity() {
         return city;
     }
 
